@@ -76,14 +76,14 @@
         if(band==='VOCABULARY'){
           var vk='w'+pad(wk)+'|VOCAB|'+day, vl=byKey[vk];
           if(vl && off.indexOf(vl.s)<0){ td.classList.add('vocab-cell'); mkBtn(td,vk,'done-toggle','✓','mark done',true); }
+          if(day==='Mon'||day==='Thu'){
+            var svk='w'+pad(wk)+'|SPELL|'+day, svl=byKey[svk];
+            if(svl && off.indexOf('Spelling')<0){ mkBtn(td,svk,'spell-toggle','🔡 ✓','🔡 spelling',false); }
+          }
           continue;
         }
         var key='w'+pad(wk)+'|'+band+'|'+day, l=byKey[key];
         if(l && off.indexOf(l.s)<0){ td.classList.add('lesson-cell'); mkBtn(td,key,'done-toggle','✓','mark done',true); }
-        if(band==='READING' && (day==='Mon'||day==='Thu')){
-          var sk='w'+pad(wk)+'|SPELL|'+day, sl=byKey[sk];
-          if(sl && off.indexOf('Spelling')<0){ td.classList.add('lesson-cell'); mkBtn(td,sk,'spell-toggle','🔡 ✓','🔡 spelling',false); }
-        }
       }
     });
   }
